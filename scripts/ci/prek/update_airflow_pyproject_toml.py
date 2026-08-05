@@ -269,7 +269,11 @@ if __name__ == "__main__":
             all_optional_dependencies.append(f'"{optional}" = [\n    "apache-airflow-core[{optional}]"\n]\n')
     optional_airflow_task_sdk_dependencies = get_optional_dependencies(AIRFLOW_TASK_SDK_PYPROJECT_TOML_FILE)
     all_optional_dependencies.append('"all-task-sdk" = [\n    "apache-airflow-task-sdk[all]"\n]\n')
-    all_providers = sorted(get_all_provider_ids(exclude_suspended_providers=True))
+    # A not-ready provider has never been released, so naming it in an extra makes that extra
+    # unsatisfiable - there is no version of it on PyPI to resolve to.
+    all_providers = sorted(
+        get_all_provider_ids(exclude_suspended_providers=True, exclude_not_ready_providers=True)
+    )
     all_provider_lines = []
     for provider_id in all_providers:
         distribution_name = provider_distribution_name(provider_id)
@@ -288,10 +292,15 @@ if __name__ == "__main__":
             all_provider_lines.append(f'    "{distribution_name}",\n')
     all_optional_dependencies.append('"all" = [\n')
     optional_apache_airflow_dependencies = get_optional_dependencies(AIRFLOW_PYPROJECT_TOML_FILE)
+    # Filtered against every provider id rather than against `all_providers`: a provider left out of
+    # `all_providers` still has an extra named after it, and testing only against the included ones
+    # would sweep that extra in here instead of dropping it - which is how a not-ready provider would
+    # come back into `all` through the side door.
+    every_provider_id = set(get_all_provider_ids())
     all_local_extras = [
         extra
         for extra in sorted(optional_apache_airflow_dependencies)
-        if extra not in all_providers and not extra.startswith("all")
+        if extra not in every_provider_id and not extra.startswith("all")
     ]
     all_optional_dependencies.append(f'    "apache-airflow[{",".join(all_local_extras)}]",\n')
     all_optional_dependencies.append('    "apache-airflow-core[all]",\n')

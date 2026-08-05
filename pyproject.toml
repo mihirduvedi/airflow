@@ -191,9 +191,6 @@ apache-airflow = "airflow.__main__:main"
 "common.compat" = [
     "apache-airflow-providers-common-compat>=1.2.1"
 ]
-"common.dataquality" = [
-    "apache-airflow-providers-common-dataquality>=0.1.0"
-]
 "common.io" = [
     "apache-airflow-providers-common-io>=1.4.2"
 ]
@@ -256,9 +253,6 @@ apache-airflow = "airflow.__main__:main"
 ]
 "http" = [
     "apache-airflow-providers-http>=4.13.2"
-]
-"ibm.mq" = [
-    "apache-airflow-providers-ibm-mq>=0.1.0; platform_machine !=\"aarch64\" and platform_machine !=\"arm64\""
 ]
 "imap" = [
     "apache-airflow-providers-imap>=3.8.0"
@@ -444,7 +438,6 @@ apache-airflow = "airflow.__main__:main"
     "apache-airflow-providers-cohere>=1.4.0",
     "apache-airflow-providers-common-ai>=0.1.0",
     "apache-airflow-providers-common-compat>=1.2.1",
-    "apache-airflow-providers-common-dataquality>=0.1.0",
     "apache-airflow-providers-common-io>=1.4.2",
     "apache-airflow-providers-common-messaging>=2.0.0", # Set from MIN_VERSION_OVERRIDE in update_airflow_pyproject_toml.py
     "apache-airflow-providers-common-sql>=1.18.0",
@@ -466,7 +459,6 @@ apache-airflow = "airflow.__main__:main"
     "apache-airflow-providers-grpc>=3.7.0",
     "apache-airflow-providers-hashicorp>=4.0.0",
     "apache-airflow-providers-http>=4.13.2",
-    "apache-airflow-providers-ibm-mq>=0.1.0; platform_machine !=\"aarch64\" and platform_machine !=\"arm64\"",
     "apache-airflow-providers-imap>=3.8.0",
     "apache-airflow-providers-influxdb>=2.8.0",
     "apache-airflow-providers-informatica>=0.1.1",
@@ -1154,8 +1146,6 @@ mypy_path = [
     "$MYPY_CONFIG_FILE_DIR/providers/common/ai/tests",
     "$MYPY_CONFIG_FILE_DIR/providers/common/compat/src",
     "$MYPY_CONFIG_FILE_DIR/providers/common/compat/tests",
-    "$MYPY_CONFIG_FILE_DIR/providers/common/dataquality/src",
-    "$MYPY_CONFIG_FILE_DIR/providers/common/dataquality/tests",
     "$MYPY_CONFIG_FILE_DIR/providers/common/io/src",
     "$MYPY_CONFIG_FILE_DIR/providers/common/io/tests",
     "$MYPY_CONFIG_FILE_DIR/providers/common/messaging/src",
@@ -1198,8 +1188,6 @@ mypy_path = [
     "$MYPY_CONFIG_FILE_DIR/providers/hashicorp/tests",
     "$MYPY_CONFIG_FILE_DIR/providers/http/src",
     "$MYPY_CONFIG_FILE_DIR/providers/http/tests",
-    "$MYPY_CONFIG_FILE_DIR/providers/ibm/mq/src",
-    "$MYPY_CONFIG_FILE_DIR/providers/ibm/mq/tests",
     "$MYPY_CONFIG_FILE_DIR/providers/imap/src",
     "$MYPY_CONFIG_FILE_DIR/providers/imap/tests",
     "$MYPY_CONFIG_FILE_DIR/providers/influxdb/src",
@@ -1468,7 +1456,6 @@ apache-airflow-providers-cncf-kubernetes = false
 apache-airflow-providers-cohere = false
 apache-airflow-providers-common-ai = false
 apache-airflow-providers-common-compat = false
-apache-airflow-providers-common-dataquality = false
 apache-airflow-providers-common-io = false
 apache-airflow-providers-common-messaging = false
 apache-airflow-providers-common-sql = false
@@ -1490,7 +1477,6 @@ apache-airflow-providers-google = false
 apache-airflow-providers-grpc = false
 apache-airflow-providers-hashicorp = false
 apache-airflow-providers-http = false
-apache-airflow-providers-ibm-mq = false
 apache-airflow-providers-imap = false
 apache-airflow-providers-influxdb = false
 apache-airflow-providers-informatica = false
@@ -1620,7 +1606,6 @@ apache-airflow-providers-cncf-kubernetes = false
 apache-airflow-providers-cohere = false
 apache-airflow-providers-common-ai = false
 apache-airflow-providers-common-compat = false
-apache-airflow-providers-common-dataquality = false
 apache-airflow-providers-common-io = false
 apache-airflow-providers-common-messaging = false
 apache-airflow-providers-common-sql = false
@@ -1642,7 +1627,6 @@ apache-airflow-providers-google = false
 apache-airflow-providers-grpc = false
 apache-airflow-providers-hashicorp = false
 apache-airflow-providers-http = false
-apache-airflow-providers-ibm-mq = false
 apache-airflow-providers-imap = false
 apache-airflow-providers-influxdb = false
 apache-airflow-providers-informatica = false
@@ -1783,7 +1767,6 @@ apache-airflow-providers-cncf-kubernetes = { workspace = true }
 apache-airflow-providers-cohere = { workspace = true }
 apache-airflow-providers-common-ai = { workspace = true }
 apache-airflow-providers-common-compat = { workspace = true }
-apache-airflow-providers-common-dataquality = { workspace = true }
 apache-airflow-providers-common-io = { workspace = true }
 apache-airflow-providers-common-messaging = { workspace = true }
 apache-airflow-providers-common-sql = { workspace = true }
@@ -1805,7 +1788,6 @@ apache-airflow-providers-google = { workspace = true }
 apache-airflow-providers-grpc = { workspace = true }
 apache-airflow-providers-hashicorp = { workspace = true }
 apache-airflow-providers-http = { workspace = true }
-apache-airflow-providers-ibm-mq = { workspace = true }
 apache-airflow-providers-imap = { workspace = true }
 apache-airflow-providers-influxdb = { workspace = true }
 apache-airflow-providers-informatica = { workspace = true }
@@ -1924,7 +1906,6 @@ members = [
     "providers/cohere",
     "providers/common/ai",
     "providers/common/compat",
-    "providers/common/dataquality",
     "providers/common/io",
     "providers/common/messaging",
     "providers/common/sql",
@@ -1946,7 +1927,6 @@ members = [
     "providers/grpc",
     "providers/hashicorp",
     "providers/http",
-    "providers/ibm/mq",
     "providers/imap",
     "providers/influxdb",
     "providers/informatica",
